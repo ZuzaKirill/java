@@ -11,7 +11,7 @@ task_5:
 package task_5;
 
 public class task_5 implements Runnable{
-    static Work work;
+    static Drip drip;
    
     public static void main(String[] args) {
         int number_of_employees;
@@ -19,7 +19,7 @@ public class task_5 implements Runnable{
         Thread first, second, third;
         
         number_of_employees = 3;//Integer.parseInt(args[0]);
-        work = new Work(number_of_employees);
+        drip = new Drip(number_of_employees);
         employees = new task_5();
         
         first = new Thread(employees);
@@ -41,20 +41,20 @@ public class task_5 implements Runnable{
 
         while (true) { 
             synchronized(this) {
-                if (work.getCurrent() > work.getCount()) {
+                if (drip.getCurrent() > drip.getCount()) {
                         return;
                 }
 
                 if (employee_name.equals("first") && (work.getemployee() == 1)) {
-                    System.out.println(work.getemployee() + " " + work.getCurrent());
+                    System.out.println(drip.getemployee() + " " + drip.getCurrent());
                     work.setemployee(2);
-                } else if (employee_name.equals("second") && (work.getemployee() == 2)) {
-                    System.out.println(work.getemployee() + " " + work.getCurrent());
-                    work.setemployee(3);
-                } else if (employee_name.equals("third") && (work.getemployee() == 3)) {
-                    System.out.println(work.getemployee() + " " + work.getCurrent() + "\n---");
-                    work.setemployee(1);
-                    work.setCurrent(work.getCurrent() + 1);                    
+                } else if (employee_name.equals("second") && (drip.getemployee() == 2)) {
+                    System.out.println(drip.getemployee() + " " + drip.getCurrent());
+                    drip.setemployee(3);
+                } else if (employee_name.equals("third") && (drip.getemployee() == 3)) {
+                    System.out.println(drip.getemployee() + " " + drip.getCurrent() + "\n---");
+                   drip.setemployee(1);
+                   drip.setCurrent(drip.getCurrent() + 1);                    
                 }
             }     
         }
